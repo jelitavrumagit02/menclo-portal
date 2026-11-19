@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 9% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 9% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 9% 15%;
+    --primary: 354 85% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 9% 95%;
+    --secondary-foreground: 220 9% 15%;
+    --muted: 220 9% 95%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 9% 95%;
+    --accent-foreground: 220 9% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 354 85% 42%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .menclo-sidebar {
+    @apply fixed left-0 top-0 h-full w-64 bg-brand-charcoal z-40 flex flex-col overflow-hidden transition-all duration-300;
+  }
+  .menclo-sidebar-collapsed {
+    @apply w-16;
+  }
+  .menclo-main {
+    @apply ml-64 min-h-screen bg-brand-offwhite transition-all duration-300;
+  }
+  .menclo-main-collapsed {
+    @apply ml-16;
+  }
+  .kpi-card {
+    @apply bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow;
+  }
+  .data-table {
+    @apply w-full text-sm;
+  }
+  .data-table th {
+    @apply text-left py-3 px-4 font-semibold text-gray-600 bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider;
+  }
+  .data-table td {
+    @apply py-3 px-4 border-b border-gray-100 text-gray-700;
+  }
+  .data-table tr:hover td {
+    @apply bg-gray-50;
+  }
+  .badge-status {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+  .badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+  .badge-neutral {
+    @apply bg-gray-100 text-gray-700;
+  }
+  .input-field {
+    @apply w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors;
+  }
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-800 transition-colors inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors inline-flex items-center gap-2;
+  }
+  .section-header {
+    @apply flex items-center justify-between mb-6;
+  }
+  .section-title {
+    @apply text-lg font-semibold text-gray-900;
+  }
+  .page-header {
+    @apply mb-8;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  .page-subtitle {
+    @apply text-sm text-gray-500 mt-1;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f2f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+  .menclo-sidebar { display: none !important; }
+  .menclo-main { margin-left: 0 !important; }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
